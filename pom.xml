@@ -39,7 +39,7 @@
     <properties>
         <verify.checkstyle.max.violations>0</verify.checkstyle.max.violations>
         <verify.coverage.threshold>100</verify.coverage.threshold>
-        <verify.mutation.threshold>100</verify.mutation.threshold>
+        <verify.mutation.threshold>94</verify.mutation.threshold>
     </properties>
 
     <dependencies>
@@ -82,13 +82,25 @@
                     <artifactId>cobertura-maven-plugin</artifactId>
                     <configuration>
                         <check>
-                            <branchRate>100</branchRate>
-                            <lineRate>100</lineRate>
-                            <totalBranchRate>100</totalBranchRate>
-                            <totalLineRate>100</totalLineRate>
-                            <packageBranchRate>100</packageBranchRate>
-                            <packageLineRate>100</packageLineRate>
+                            <branchRate>87</branchRate>
+                            <lineRate>92</lineRate>
+                            <totalBranchRate>87</totalBranchRate>
+                            <totalLineRate>92</totalLineRate>
+                            <packageBranchRate>87</packageBranchRate>
+                            <packageLineRate>92</packageLineRate>
                         </check>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.pitest</groupId>
+                    <artifactId>pitest-maven</artifactId>
+                    <configuration>
+                        <targetClasses>
+                            <param>ch.ledcom.assertj*</param>
+                        </targetClasses>
+                        <targetTests>
+                            <param>ch.ledcom.assertj*</param>
+                        </targetTests>
                     </configuration>
                 </plugin>
             </plugins>

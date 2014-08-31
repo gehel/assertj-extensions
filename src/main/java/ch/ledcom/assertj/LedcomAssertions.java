@@ -24,19 +24,19 @@ import java.nio.file.Path;
 
 public class LedcomAssertions extends Assertions {
 
-    public static CpioArchiveInputStreamAssert assertThat(CpioArchiveInputStream actual) {
-        return new CpioArchiveInputStreamAssert(actual);
-    }
-
     public static ByteBufferAssert assertThat(ByteBuffer actual) {
         return new ByteBufferAssert(actual);
     }
 
-    public static PathAssert assertThat(Path actual) {
-        return new PathAssert(actual);
+    public static CpioArchiveInputStreamAssert assertThat(CpioArchiveInputStream actual) {
+        return new CpioArchiveInputStreamAssert(actual);
     }
 
     public static FsDirectoryEntryAssert assertThat(FsDirectoryEntry actual) {
         return new FsDirectoryEntryAssert(actual);
+    }
+
+    public static PathAssert assertThat(Path actual) {
+        return new PathAssert(actual);
     }
 }

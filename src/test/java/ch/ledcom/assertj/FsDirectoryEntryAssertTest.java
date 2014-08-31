@@ -17,7 +17,6 @@ package ch.ledcom.assertj;
 
 import de.waldheinz.fs.FsDirectoryEntry;
 import org.junit.Test;
-import org.mockito.internal.matchers.Null;
 
 import java.io.IOException;
 import java.util.Date;
@@ -25,9 +24,9 @@ import java.util.Date;
 import static ch.ledcom.assertj.FsDirectoryEntryAssert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class FsDirectoryEntryAssertTest {
-
 
     @Test
     public final void assertModificationDateWithPrecisionOfZero() throws IOException {
@@ -58,7 +57,22 @@ public class FsDirectoryEntryAssertTest {
 
     @Test(expected = AssertionError.class)
     public final void failForNullEntry() throws IOException {
-        assertThat((FsDirectoryEntry)null).hasBeenModifiedAt(new Date(1000L), 9);
+        assertThat((FsDirectoryEntry) null).hasBeenModifiedAt(new Date(1000L), 9);
+    }
+
+    @Test
+    public final void errorMessageContainsAllNeededInformation() throws IOException {
+        try {
+            FsDirectoryEntry entry = mock(FsDirectoryEntry.class);
+            when(entry.getLastModified()).thenReturn(1000L);
+            when(entry.getName()).thenReturn("entry name");
+
+            assertThat(entry).hasBeenModifiedAt(new Date(100000L), 0);
+        } catch (AssertionError error) {
+            assertThat(error.getMessage()).contains("entry name");
+            assertThat(error.getMessage()).contains("01:00:01");
+            assertThat(error.getMessage()).contains("01:01:40");
+        }
     }
 
 }
