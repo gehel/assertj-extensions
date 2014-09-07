@@ -17,6 +17,7 @@ package ch.ledcom.assertj;
 
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -79,6 +80,23 @@ public class PathAssertTest {
     @Test(expected = AssertionError.class)
     public void nullPathHasNoFileName() {
         assertThat((Path)null).hasFileName("");
+    }
+
+    @Test
+    public void matchingPathContent() throws IOException {
+        Path pathUnderTest = new File(getClass().getResource("/hello.txt").getFile()).toPath();
+        assertThat(pathUnderTest).hasContent("hello");
+    }
+
+    @Test(expected = AssertionError.class)
+    public void nonMatchingPathContent() throws IOException {
+        Path pathUnderTest = new File(getClass().getResource("/hello.txt").getFile()).toPath();
+        assertThat(pathUnderTest).hasContent("world");
+    }
+
+    @Test(expected = AssertionError.class)
+    public void nullPathHasNoContent() throws IOException {
+        assertThat((Path)null).hasContent("");
     }
 
 }

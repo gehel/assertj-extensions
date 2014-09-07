@@ -16,7 +16,9 @@
 package ch.ledcom.assertj;
 
 import org.assertj.core.api.AbstractAssert;
+import org.assertj.core.api.Assertions;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -52,5 +54,11 @@ public class PathAssert extends AbstractAssert<PathAssert, Path> {
         if (!actual.getFileName().toString().equals(fileName)) {
             failWithMessage("Path <%s> does not have file name <%s>.", actual, fileName);
         }
+    }
+
+    public final void hasContent(String content) throws IOException {
+        isNotNull();
+
+        Assertions.assertThat(Files.newInputStream(actual)).hasContentEqualTo(new ByteArrayInputStream(content.getBytes("UTF-8")));
     }
 }

@@ -36,7 +36,7 @@
 
     <properties>
         <verify.checkstyle.max.violations>0</verify.checkstyle.max.violations>
-        <verify.coverage.threshold>89</verify.coverage.threshold>
+        <verify.coverage.threshold>88</verify.coverage.threshold>
         <verify.mutation.threshold>94</verify.mutation.threshold>
     </properties>
 
@@ -83,9 +83,9 @@
                             <branchRate>87</branchRate>
                             <lineRate>92</lineRate>
                             <totalBranchRate>93</totalBranchRate>
-                            <totalLineRate>97</totalLineRate>
+                            <totalLineRate>98</totalLineRate>
                             <packageBranchRate>93</packageBranchRate>
-                            <packageLineRate>97</packageLineRate>
+                            <packageLineRate>98</packageLineRate>
                         </check>
                     </configuration>
                 </plugin>
@@ -99,6 +99,15 @@
                         <targetTests>
                             <param>ch.ledcom.assertj*</param>
                         </targetTests>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.mycila</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <configuration combine.children="append">
+                        <excludes>
+                            <exclude>src/test/resources/hello.txt</exclude>
+                        </excludes>
                     </configuration>
                 </plugin>
             </plugins>
