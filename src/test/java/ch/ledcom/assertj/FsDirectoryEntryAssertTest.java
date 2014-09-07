@@ -70,8 +70,8 @@ public class FsDirectoryEntryAssertTest {
             assertThat(entry).hasBeenModifiedAt(new Date(100000L), 0);
         } catch (AssertionError error) {
             assertThat(error).hasMessageContaining("Entry <\"entry name");
-            assertThat(error).hasMessageContaining("has not been modified at <\"01-Jan-1970 01:01:40");
-            assertThat(error).hasMessageContaining("Last modification was on <\"01-Jan-1970 01:00:01");
+            assertThat(error).hasMessageContaining("has not been modified at <\"1970.01.01 at 01:01:40");
+            assertThat(error).hasMessageContaining("Last modification was on <\"1970.01.01 at 01:00:01");
         }
     }
 

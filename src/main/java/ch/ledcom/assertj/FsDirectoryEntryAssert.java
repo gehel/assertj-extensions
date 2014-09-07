@@ -22,10 +22,11 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class FsDirectoryEntryAssert extends AbstractAssert<FsDirectoryEntryAssert, FsDirectoryEntry> {
 
-    private static final DateFormat DATE_FORMAT = SimpleDateFormat.getDateTimeInstance();
+    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy.MM.dd 'at' HH:mm:ss");
 
     protected FsDirectoryEntryAssert(FsDirectoryEntry actual) {
         super(actual, FsDirectoryEntryAssert.class);
