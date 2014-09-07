@@ -19,6 +19,8 @@ import de.waldheinz.fs.FsDirectoryEntry;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static ch.ledcom.assertj.FsDirectoryEntryAssert.assertThat;
@@ -27,6 +29,8 @@ import static org.mockito.Mockito.when;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class FsDirectoryEntryAssertTest {
+
+    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy.MM.dd 'at' HH:mm:ss");
 
     @Test
     public final void assertModificationDateWithPrecisionOfZero() throws IOException {
@@ -70,8 +74,8 @@ public class FsDirectoryEntryAssertTest {
             assertThat(entry).hasBeenModifiedAt(new Date(100000L), 0);
         } catch (AssertionError error) {
             assertThat(error).hasMessageContaining("Entry <\"entry name");
-            assertThat(error).hasMessageContaining("has not been modified at <\"1970.01.01 at 01:01:40");
-            assertThat(error).hasMessageContaining("Last modification was on <\"1970.01.01 at 01:00:01");
+            assertThat(error).hasMessageContaining("has not been modified at <\"" + DATE_FORMAT.format(new Date(100000L)));
+            assertThat(error).hasMessageContaining("Last modification was on <\"" + DATE_FORMAT.format(new Date(1000L)));
         }
     }
 
