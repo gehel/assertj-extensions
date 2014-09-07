@@ -36,7 +36,7 @@
 
     <properties>
         <verify.checkstyle.max.violations>0</verify.checkstyle.max.violations>
-        <verify.coverage.threshold>90</verify.coverage.threshold>
+        <verify.coverage.threshold>89</verify.coverage.threshold>
         <verify.mutation.threshold>94</verify.mutation.threshold>
     </properties>
 
@@ -82,10 +82,10 @@
                         <check>
                             <branchRate>87</branchRate>
                             <lineRate>92</lineRate>
-                            <totalBranchRate>87</totalBranchRate>
-                            <totalLineRate>92</totalLineRate>
-                            <packageBranchRate>87</packageBranchRate>
-                            <packageLineRate>92</packageLineRate>
+                            <totalBranchRate>93</totalBranchRate>
+                            <totalLineRate>97</totalLineRate>
+                            <packageBranchRate>93</packageBranchRate>
+                            <packageLineRate>97</packageLineRate>
                         </check>
                     </configuration>
                 </plugin>

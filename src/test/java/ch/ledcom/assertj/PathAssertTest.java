@@ -22,6 +22,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static ch.ledcom.assertj.PathAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PathAssertTest {
 
@@ -53,6 +54,31 @@ public class PathAssertTest {
     @Test(expected = AssertionError.class)
     public void testingForNonExistenceOfNullPathThrowsException() throws IOException {
         assertThat((Path)null).doesNotExist();
+    }
+
+    @Test
+    public void matchingFileName() {
+        assertThat(Paths.get("/tmp/toto.ext")).hasFileName("toto.ext");
+    }
+
+    @Test(expected = AssertionError.class)
+    public void nonMatchingFileName() {
+        assertThat(Paths.get("/tmp/toto.ext")).hasFileName("tutu.ext");
+    }
+
+    @Test
+    public void nonMatchingFileNameErrorMessagesContainsAllNeededInformation() {
+        try {
+            assertThat(Paths.get("/tmp/toto.ext")).hasFileName("tutu.ext");
+        } catch (AssertionError ae) {
+            assertThat(ae).hasMessageContaining("Path </tmp/toto.ext");
+            assertThat(ae).hasMessageContaining("file name <\"tutu.ext");
+        }
+    }
+
+    @Test(expected = AssertionError.class)
+    public void nullPathHasNoFileName() {
+        assertThat((Path)null).hasFileName("");
     }
 
 }

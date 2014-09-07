@@ -45,4 +45,12 @@ public class PathAssert extends AbstractAssert<PathAssert, Path> {
             failWithMessage("File <%s> exists.", actual);
         }
     }
+
+    public final void hasFileName(String fileName) {
+        isNotNull();
+
+        if (!actual.getFileName().toString().equals(fileName)) {
+            failWithMessage("Path <%s> does not have file name <%s>.", actual, fileName);
+        }
+    }
 }
