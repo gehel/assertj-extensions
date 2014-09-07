@@ -27,7 +27,7 @@
 
     <groupId>ch.ledcom.assertj-extensions</groupId>
     <artifactId>assertj-extensions</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1</version>
 
     <name>JPreseed</name>
     <description>Additional assertions for AssertJ.</description>
@@ -128,7 +128,7 @@
         <connection>scm:git:git://github.com/gehel/assertj-extensions.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/gehel/assertj-extensions.git</developerConnection>
         <url>https://github.com/gehel/assertj-extensions</url>
-        <tag>HEAD</tag>
+        <tag>assertj-extensions-1.1</tag>
     </scm>
 
 </project>
