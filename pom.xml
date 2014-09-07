@@ -107,6 +107,7 @@
                     <configuration combine.children="append">
                         <excludes>
                             <exclude>src/test/resources/hello.txt</exclude>
+                            <exclude>src/test/resources/test-archive.cpio</exclude>
                         </excludes>
                     </configuration>
                 </plugin>
